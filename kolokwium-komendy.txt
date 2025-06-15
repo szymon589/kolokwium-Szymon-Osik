@@ -1,0 +1,19 @@
+1 cd ~
+2 mkdir raporty
+3 chmod 700 raporty
+4 cd raporty
+5,6,7 echo "miasto,populacja,rok" > statystyki.csv
+echo "Warszawa,1793579,2024" >> statystyki.csv
+echo "Kraków,800653,2024" >> statystyki.csv
+echo "Wrocław,672929,2024" >> statystyki.csv
+echo "Rzeszów,198781,2024" >> statystyki.csv
+8 cat statystyki.csv
+9 touch .archiwum_statystyk.csv
+10 ls -la
+11 find /etc -type f -name "*net*"
+12 find / -type d -name "*log*" 2>/dev/null > logdirs.txt
+13 tail -n +2 statystyki.csv | sort | nl > .archiwum_statystyk2.csv
+14 diff .archiwum_statystyk.csv .archiwum_statystyk2.csv
+15 sed 's/,/ /g' statystyki.csv > .archiwum_statystyk.csv
+16 sed -n '/8/p' statystyki.csv | cut -d',' -f1
+17 df -h | awk 'BEGIN {sum1=0; sum2=0} NR>1 {print $6, $2, $3; sum1+=$2; sum2+=$3} END {print "SUMA:", sum1, sum2}'
